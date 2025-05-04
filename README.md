@@ -11,19 +11,8 @@ To use `notk9s` anywhere, add this to your shell profile:
 alias notk9s="/full/path/to/notk9s.sh"
 ````
 
-Then reload your shell:
 
-```bash
-source ~/.zshrc  # or ~/.bashrc
-```
-
-Now just run:
-
-```bash
-notk9s
-```
-
-Or get help with:
+Get help with:
 
 ```bash
 notk9s --help
