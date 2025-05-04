@@ -18,6 +18,7 @@ print_help() {
   echo -e "  ${YELLOW}image-pull${NC}           Time spent pulling container image"
   echo -e "  ${YELLOW}node-reuse${NC}           Check if pod used a new or reused node"
   echo -e "  ${YELLOW}restart-reason${NC}       Show restart reasons for pods"
+  echo -e "  ${YELLOW}pending-reason${NC}       Show why pods are stuck in Pending"
   echo ""
   echo -e "${RED}🔧 TIP:${NC} Run ${YELLOW}'$0'${NC} with ${YELLOW}no arguments${NC} to launch ${BLUE}interactive mode${NC}!"
   echo ""
@@ -31,6 +32,7 @@ show_menu() {
   echo -e "${BLUE}3)${NC} Image Pull Time"
   echo -e "${BLUE}4)${NC} Node Reuse Check"
   echo -e "${BLUE}5)${NC} Restart Reason Analyzer"
+  echo -e "${BLUE}6)${NC} Pending Reason Analyzer"
   echo ""
 
   echo -ne "${YELLOW}Enter number: ${NC}"
@@ -51,6 +53,7 @@ show_menu() {
     3) bash "$SCRIPT_DIR/image_pull_time.sh" "$NAMESPACE" "$PREFIX" ;;
     4) bash "$SCRIPT_DIR/node_reuse_check.sh" "$NAMESPACE" "$PREFIX" ;;
     5) bash "$SCRIPT_DIR/restart_reason_analyzer.sh" "$NAMESPACE" "$PREFIX" ;;
+    6) bash "$SCRIPT_DIR/pending_reason_analyzer.sh" "$NAMESPACE" "$PREFIX" ;;
     *) echo -e "${RED}❌ Invalid selection.${NC}" ;;
   esac
 }
@@ -93,6 +96,9 @@ case $COMMAND in
     ;;
   restart-reason)
     bash "$SCRIPT_DIR/restart_reason_analyzer.sh" "$NAMESPACE" "$PREFIX"
+    ;;
+  pending-reason)
+    bash "$SCRIPT_DIR/pending_reason_analyzer.sh" "$NAMESPACE" "$PREFIX"
     ;;
   *)
     echo -e "${RED}❌ Unknown command: $COMMAND${NC}"
